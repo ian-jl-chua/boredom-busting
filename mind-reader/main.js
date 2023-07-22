@@ -1,10 +1,12 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("mindReaderForm");
-  form.addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent page reload
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('mindReaderForm')
 
-    const selectedNumber = document.getElementById("selectedNumber").value;
+  form.addEventListener('submit', (event) => {
+    event.preventDefault() // Prevent page reload
+
+    const selectedNumber = document.getElementById('selectedNumber').value
+    
     // Do something with the selectedNumber
-    console.log("User selected number:", selectedNumber);
-  });
-});
+    console.log('User selected number:', selectedNumber)
+  })
+})
