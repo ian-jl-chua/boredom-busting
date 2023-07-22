@@ -8,16 +8,39 @@
     <title>Mind Reader</title>
   </head>
   <body>
-    <div class="window" style="width: 300px">
-      <div class="title-bar">
-        <div class="title-bar-text">Mind Reader</div>
-        <div class="title-bar-controls">
-          <button aria-label="Minimize"></button>
-          <button aria-label="Maximize"></button>
-          <button aria-label="Close"></button>
+    <div class="prompt container">
+      <div class="window" style="width: 300px">
+        <div class="title-bar">
+          <div class="title-bar-text">Mind Reader</div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close"></button>
+          </div>
         </div>
-      </div>
-      <div class="window-body">
+        <div class="window-body">
+          <br />
+          <div class="field-row-stacked number-field" style="width: 180px">
+            <label for="text19">Think of a number between 1 and 10</label>
+            <select>
+              <option value="" selected disabled>Select your number...</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
+          </div>
+          <br />
+          <div class="container button">
+            <button type="submit">Read my mind</button>
+          </div>
+        </div>
       </div>
     </div>
   </body>
