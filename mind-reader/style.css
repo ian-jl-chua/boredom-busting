@@ -4,6 +4,15 @@
   margin: 0;
 }
 
+/* to be amended */
+input,
+button,
+label {
+  font-size: clamp(.9rem, 1.1vw, 1.5rem);
+}
+/* to be amended */
+
+
 body {
   background-color: black;
   height: 100vh;
@@ -14,7 +23,7 @@ body {
 }
 
 .prompt {
-  padding: 16rem 6rem;
+  padding: 12rem 3rem;
   justify-content: center;
   align-content: center;
   align-items: center;
@@ -24,3 +33,14 @@ body {
   justify-content: end;
   align-items: center;
 }
+
+
+/* to be amended */
+.title-font {
+  font-size: clamp(0.9rem, 1vw, 1.5rem);
+}
+
+.window-width {
+  width: clamp(270px, 50%, 400px);
+}
+/* to be amended */
