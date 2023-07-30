@@ -7,11 +7,11 @@
 /* to be amended */
 input,
 button,
-label {
-  font-size: clamp(.9rem, 1.1vw, 1.5rem);
+label,
+p {
+  font-size: clamp(0.9rem, 1.1vw, 1.5rem);
 }
 /* to be amended */
-
 
 body {
   background-color: black;
@@ -33,7 +33,6 @@ body {
   justify-content: end;
   align-items: center;
 }
-
 
 /* to be amended */
 .title-font {
