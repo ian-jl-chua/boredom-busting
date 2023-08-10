@@ -2,11 +2,16 @@
 function storeDataAndRedirect() {
   const selectedNumber = document.getElementById('selectedNumber').value
 
-  localStorage.setItem('selectedNumber', selectedNumber)
+  // handling if user doesn't select a number
+  if (!selectedNumber | null) {
+    const alertMessage = document.querySelector('#alertMessage')
+    alertMessage.innerHTML = "<p> You didn't select a number... </p> <br/>"
+  } else {
+    localStorage.setItem('selectedNumber', selectedNumber)
 
-  window.location.href = 'result.html'
+    window.location.href = 'result.html'
+  }
 }
-
 // Event listener for read mind button
 document.addEventListener('DOMContentLoaded', () => {
   const readMind = document.getElementById('readMindButton')
@@ -24,7 +29,7 @@ resultDiv.textContent = `${storedNumber}`
 // Clears local storage and redirects user back to home page
 function resetAndRedirect() {
   localStorage.clear()
-  
+
   window.location.href = 'index.html'
 }
 
