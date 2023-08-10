@@ -1,39 +1,36 @@
-// Obtaining and storing user input
+// Reading the user input and storing the data in local storage, then redirect user to result page
+function storeDataAndRedirect() {
+  const selectedNumber = document.getElementById('selectedNumber').value
+
+  localStorage.setItem('selectedNumber', selectedNumber)
+
+  window.location.href = 'result.html'
+}
+
+// Event listener for read mind button
 document.addEventListener('DOMContentLoaded', () => {
-  const readMindButton = document.getElementById('readMindButton');
+  const readMind = document.getElementById('readMindButton')
 
-  readMindButton.addEventListener('click', () => {
-    const selectedNumber = document.getElementById('selectedNumber').value;
+  readMind.addEventListener('click', storeDataAndRedirect)
+})
 
-    // Store the selected number in Local Storage
-    localStorage.setItem('selectedNumber', selectedNumber);
+// Retrieve the stored number from Local Storage
+// Display the stored number on the page
+const storedNumber = localStorage.getItem('selectedNumber')
 
-    // Redirect to the different HTML page
-    window.location.href = 'result.html';
-  });
-});
+const resultDiv = document.getElementById('result')
+resultDiv.textContent = `${storedNumber}`
 
- // Retrieve the stored number from Local Storage
- const storedNumber = localStorage.getItem('selectedNumber');
+// Clears local storage and redirects user back to home page
+function resetAndRedirect() {
+  localStorage.clear()
+  
+  window.location.href = 'index.html'
+}
 
- // Display the stored number on the page
- const resultDiv = document.getElementById('result');
- resultDiv.textContent = `${storedNumber}`;
+// Event listener for the play again button
+document.addEventListener('DOMContentLoaded', () => {
+  const playAgain = document.getElementById('resultButton')
 
-
-// MIGHT BE USEFUL LATER ON
- // document.addEventListener('DOMContentLoaded', () => {
-//   const form = document.getElementById('mindReaderForm');
-
-//   form.addEventListener('submit', (event) => {
-//     event.preventDefault(); // Prevent page reload
-
-//     const selectedNumber = document.getElementById('selectedNumber').value;
-
-//     // Store the selected number in Local Storage
-//     localStorage.setItem('selectedNumber', selectedNumber);
-
-//     // Redirect to the different HTML page
-//     window.location.href = 'result.html';
-//   });
-// });
+  playAgain.addEventListener('click', resetAndRedirect)
+})
