@@ -5,13 +5,18 @@ function storeDataAndRedirect() {
   // handling if user doesn't select a number
   if (!selectedNumber | null) {
     const alertMessage = document.querySelector('#alertMessage')
+
+    document.querySelector('#alertMessage').previousElementSibling.remove() //removing the <br/> before the div
+
     alertMessage.innerHTML = "<p> You didn't select a number... </p> <br/>"
+    
   } else {
     localStorage.setItem('selectedNumber', selectedNumber)
 
     window.location.href = 'result.html'
   }
 }
+
 // Event listener for read mind button
 document.addEventListener('DOMContentLoaded', () => {
   const readMind = document.getElementById('readMindButton')

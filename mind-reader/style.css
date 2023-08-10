@@ -8,6 +8,7 @@
 input,
 button,
 label,
+select,
 p {
   font-size: clamp(0.9rem, 1.1vw, 1.5rem);
 }
@@ -34,12 +35,16 @@ body {
   align-items: center;
 }
 
+.body-padding {
+  padding: 0.5rem;
+}
+
 /* to be amended */
 .title-font {
   font-size: clamp(0.9rem, 1vw, 1.5rem);
 }
 
 .window-width {
-  width: clamp(270px, 50%, 400px);
+  width: clamp(290px, 50%, 410px);
 }
 /* to be amended */
