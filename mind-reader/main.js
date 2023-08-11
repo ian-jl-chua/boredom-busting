@@ -9,7 +9,6 @@ function storeDataAndRedirect() {
     document.querySelector('#alertMessage').previousElementSibling.remove() //removing the <br/> before the div
 
     alertMessage.innerHTML = "<p> You didn't select a number... </p> <br/>"
-    
   } else {
     localStorage.setItem('selectedNumber', selectedNumber)
 
@@ -19,17 +18,15 @@ function storeDataAndRedirect() {
 
 // Event listener for read mind button
 document.addEventListener('DOMContentLoaded', () => {
-  const readMind = document.getElementById('readMindButton')
+  if (window.location.href.includes('index.html')) {
+    const readMind = document.getElementById('readMindButton')
 
-  readMind.addEventListener('click', storeDataAndRedirect)
+    readMind.addEventListener('click', storeDataAndRedirect)
+  }
 })
 
 // Retrieve the stored number from Local Storage
-// Display the stored number on the page
 const storedNumber = localStorage.getItem('selectedNumber')
-
-const resultDiv = document.getElementById('result')
-resultDiv.textContent = `${storedNumber}`
 
 // Clears local storage and redirects user back to home page
 function resetAndRedirect() {
@@ -39,8 +36,14 @@ function resetAndRedirect() {
 }
 
 // Event listener for the play again button
+// Display the stored number on the page
 document.addEventListener('DOMContentLoaded', () => {
-  const playAgain = document.getElementById('resultButton')
+  if (window.location.href.includes('result.html')) {
+    const resultDiv = document.getElementById('result')
+    resultDiv.textContent = `${storedNumber}`
 
-  playAgain.addEventListener('click', resetAndRedirect)
+    const playAgain = document.getElementById('resultButton')
+
+    playAgain.addEventListener('click', resetAndRedirect)
+  }
 })
