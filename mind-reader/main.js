@@ -6,7 +6,10 @@ function storeDataAndRedirect() {
   if (!selectedNumber | null) {
     const alertMessage = document.querySelector('#alertMessage')
 
-    document.querySelector('#alertMessage').previousElementSibling.remove() //removing the <br/> before the div
+    const previousSibling = alertMessage.previousElementSibling;
+    if (previousSibling) {
+      previousSibling.remove(); // Removing the <br/> before the div
+    }
 
     alertMessage.innerHTML = "<p> You didn't select a number... </p> <br/>"
   } else {
