@@ -15,7 +15,32 @@ p {
 /* to be amended */
 
 body {
-  background-color: black;
+  display: flex;
+  justify-content: center;
+  background: rgb(0, 88, 88);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 88, 88, 1) 0%,
+    rgba(0, 107, 107, 1) 13%,
+    rgba(0, 128, 128, 1) 25%,
+    rgba(10, 130, 130, 1) 50%,
+    rgba(0, 128, 128, 1) 75%,
+    rgba(0, 107, 107, 1) 88%,
+    rgba(0, 88, 88, 1) 100%
+  );
+
+  /* Bottom one looks good too */
+  /* background: rgb(0, 88, 88);
+  background: radial-gradient(
+    circle,
+    rgba(0, 88, 88, 1) 0%,
+    rgba(0, 107, 107, 1) 13%,
+    rgba(0, 128, 128, 1) 25%,
+    rgba(10, 130, 130, 1) 50%,
+    rgba(0, 128, 128, 1) 75%,
+    rgba(0, 107, 107, 1) 88%,
+    rgba(0, 88, 88, 1) 100%
+  ); */
   height: 100vh;
 }
 
@@ -24,7 +49,7 @@ body {
 }
 
 .prompt {
-  padding: 12rem 3rem;
+  width: clamp(290px, 50%, 410px);
   justify-content: center;
   align-content: center;
   align-items: center;
@@ -45,6 +70,6 @@ body {
 }
 
 .window-width {
-  width: clamp(290px, 50%, 410px);
+  width: 100%;
 }
 /* to be amended */
