@@ -13,7 +13,7 @@ function storeDataAndRedirect() {
 
     alertMessage.innerHTML = "<p> You didn't select a number... </p> <br/>"
   } else {
-    localStorage.setItem('selectedNumber', selectedNumber)
+    sessionStorage.setItem('selectedNumber', selectedNumber)
 
     window.location.href = 'result.html'
   }
@@ -29,11 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 // Retrieve the stored number from Local Storage
-const storedNumber = localStorage.getItem('selectedNumber')
+const storedNumber = sessionStorage.getItem('selectedNumber')
 
 // Clears local storage and redirects user back to home page
 function resetAndRedirect() {
-  localStorage.clear()
+  sessionStorage.clear()
 
   window.location.href = 'index.html'
 }
