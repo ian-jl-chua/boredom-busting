@@ -6,9 +6,9 @@ function storeDataAndRedirect() {
   if (!selectedNumber | null) {
     const alertMessage = document.querySelector('#alertMessage')
 
-    const previousSibling = alertMessage.previousElementSibling;
+    const previousSibling = alertMessage.previousElementSibling
     if (previousSibling) {
-      previousSibling.remove(); // Removing the <br/> before the div
+      previousSibling.remove() // Removing the <br/> before the div
     }
 
     alertMessage.innerHTML = "<p> You didn't select a number... </p> <br/>"
@@ -33,7 +33,8 @@ const storedNumber = sessionStorage.getItem('selectedNumber')
 
 // Clears local storage and redirects user back to home page
 function resetAndRedirect() {
-  sessionStorage.clear()
+  sessionStorage.removeItem('selectedNumber')
+  // didn't use sessionStorage.clear() because the code above is more specific
 
   window.location.href = 'index.html'
 }
