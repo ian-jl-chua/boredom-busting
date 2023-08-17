@@ -5,6 +5,8 @@
 }
 
 :root {
+  --FF: 'Poppins', sans-serif;
+  --FS: clamp(1rem, 2.2vh, 1.5rem);
   --BG-COLOR: rgb(190, 157, 129);
   --TXT-COLOR: rgb(48, 24, 21);
 }
@@ -19,7 +21,8 @@
 body {
   background-color: var(--BG-COLOR);
   color: var(--TXT-COLOR);
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--FF);
+  font-size: var(--FS);
 }
 
 .container {
@@ -37,7 +40,7 @@ body {
   /* background-color: rgb(142, 83, 83); */
 }
 
-/* TO BE REMOVED WHEN ALL STYLING IS DONE */
+/* -------USE TO GAUGE THE OUTLINE------- */
 /* .look {
   border: solid;
   border-color: whitesmoke;
@@ -116,7 +119,7 @@ body {
   height: 50px;
 } */
 
-.but {
+.button {
   grid-area: 4/5/4/6;
   /* grid-area: 4/3/4/4; */
 }
