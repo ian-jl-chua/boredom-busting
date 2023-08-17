@@ -40,96 +40,16 @@ body {
   /* background-color: rgb(142, 83, 83); */
 }
 
-/* -------USE TO GAUGE THE OUTLINE------- */
-/* .look {
-  border: solid;
-  border-color: whitesmoke;
-} */
-/* TO BE REMOVED WHEN ALL STYLING IS DONE */
-
-/* .a {
-  grid-area: 2/1/2/2;
-  border: solid;
-  border-color: whitesmoke;
-  width: 50px;
-  height: 50px;
-}
-
-.b {
-  grid-area: 2/2/2/3;
-  border: solid;
-  border-color: whitesmoke;
-  width: 50px;
-  height: 50px;
-}
-
-.c {
-  grid-area: 2/3/2/4;
-  border: solid;
-  border-color: whitesmoke;
-  width: 50px;
-  height: 50px;
-}
-
-.d {
-  grid-area: 2/4/2/5;
-  border: solid;
-  border-color: whitesmoke;
-  width: 50px;
-  height: 50px;
-}
-
-.e {
-  grid-area: 2/5/2/6;
-  border: solid;
-  border-color: whitesmoke;
-  width: 50px;
-  height: 50px;
-}
-
-.f {
-  grid-area: 2/6/2/7;
-  border: solid;
-  border-color: whitesmoke;
-  width: 50px;
-  height: 50px;
-}
-
-.g {
-  grid-area: 2/7/2/8;
-  border: solid;
-  border-color: whitesmoke;
-  width: 50px;
-  height: 50px;
-}
-
-.h {
-  grid-area: 2/8/2/9;
-  border: solid;
-  border-color: whitesmoke;
-  width: 50px;
-  height: 50px;
-}
-
-.i {
-  grid-area: 2/9/2/10;
-  border: solid;
-  border-color: whitesmoke;
-  width: 50px;
-  height: 50px;
-} */
-
 .button {
   grid-area: 4/5/4/6;
-  /* grid-area: 4/3/4/4; */
 }
-
-/* rol-st, col-st, row-en, col-en */
 
 .message {
   grid-area: 6/3/7/8;
   /* background-color: rgb(148, 97, 97); */
 }
+
+/* rol-st, col-st, row-en, col-en */
 
 /* Button */
 .button-pushAble {
@@ -222,3 +142,82 @@ body {
 .button-pushAble:focus:not(:focus-visible) {
   outline: none;
 }
+
+/* -------USE TO GAUGE THE OUTLINE------- */
+/* .look {
+  border: solid;
+  border-color: whitesmoke;
+} */
+/* TO BE REMOVED WHEN ALL STYLING IS DONE */
+
+/* .a {
+  grid-area: 2/1/2/2;
+  border: solid;
+  border-color: whitesmoke;
+  width: 50px;
+  height: 50px;
+}
+
+.b {
+  grid-area: 2/2/2/3;
+  border: solid;
+  border-color: whitesmoke;
+  width: 50px;
+  height: 50px;
+}
+
+.c {
+  grid-area: 2/3/2/4;
+  border: solid;
+  border-color: whitesmoke;
+  width: 50px;
+  height: 50px;
+}
+
+.d {
+  grid-area: 2/4/2/5;
+  border: solid;
+  border-color: whitesmoke;
+  width: 50px;
+  height: 50px;
+}
+
+.e {
+  grid-area: 2/5/2/6;
+  border: solid;
+  border-color: whitesmoke;
+  width: 50px;
+  height: 50px;
+}
+
+.f {
+  grid-area: 2/6/2/7;
+  border: solid;
+  border-color: whitesmoke;
+  width: 50px;
+  height: 50px;
+}
+
+.g {
+  grid-area: 2/7/2/8;
+  border: solid;
+  border-color: whitesmoke;
+  width: 50px;
+  height: 50px;
+}
+
+.h {
+  grid-area: 2/8/2/9;
+  border: solid;
+  border-color: whitesmoke;
+  width: 50px;
+  height: 50px;
+}
+
+.i {
+  grid-area: 2/9/2/10;
+  border: solid;
+  border-color: whitesmoke;
+  width: 50px;
+  height: 50px;
+} */
