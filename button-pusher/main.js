@@ -11,20 +11,31 @@ const messages = [
   '*sigh*',
 ]
 
-const second = ['omgggggg', "You're STILL pressing it...", 'Goodness me']
+const second = [
+  'omgggggg',
+  "You're STILL pressing it...",
+  'Goodness me',
+  'Do you really have nothing better to do?',
+]
 
 let currentMessageIndex = 0
 let secondMessageIndex = 0
 let clickCount = 0
 
 function firstMessage() {
+  secondChangeText.textContent = ''
   changeText.textContent = messages[currentMessageIndex]
   currentMessageIndex = (currentMessageIndex + 1) % messages.length
 }
 
 function secondMessage() {
+  changeText.textContent = ''
   secondChangeText.textContent = second[secondMessageIndex]
   secondMessageIndex = (secondMessageIndex + 1) % second.length
+}
+
+function move(){
+  
 }
 
 function buttonClick() {
@@ -47,7 +58,7 @@ function buttonClick() {
   //   currentMessageIndex = 1
   // }
 
-  clickCount = clickCount + 1
+  clickCount = (clickCount + 1) % 13
   // clickCount = (clickCount + 1) % 10
   // changeText.textContent = messages[currentMessageIndex] //changing text context of the paragraph element
 
