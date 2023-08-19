@@ -11,17 +11,53 @@ const messages = [
   '*sigh*',
 ]
 
+const second = ['omgggggg', "You're STILL pressing it...", 'Goodness me']
+
 let currentMessageIndex = 0
+let secondMessageIndex = 0
+let clickCount = 0
+
+function firstMessage() {
+  changeText.textContent = messages[currentMessageIndex]
+  currentMessageIndex = (currentMessageIndex + 1) % messages.length
+}
+
+function secondMessage() {
+  secondChangeText.textContent = second[secondMessageIndex]
+  secondMessageIndex = (secondMessageIndex + 1) % second.length
+}
 
 function buttonClick() {
-  changeText.textContent = messages[currentMessageIndex] //changing text context of the paragraph element
+  if (clickCount >= 9) {
+    secondMessage()
+  } else {
+    firstMessage()
+  }
+  // if (clickCount < 9) {
+  //   changeText.textContent = messages[currentMessageIndex]
+  //   currentMessageIndex = (currentMessageIndex + 1) % messages.length
+  // } else if (clickCount > 9 && clickCount < 11) {
+  //   // look at creating a p element
+  //   secondChangeText.textContent = second[secondMessageIndex]
 
-  currentMessageIndex = (currentMessageIndex + 1) % messages.length
+  //   secondMessageIndex = (secondMessageIndex + 1) % second.length
+
+  // } else if (clickCount === 11) {
+  //   changeText.textContent = messages[0]
+  //   currentMessageIndex = 1
+  // }
+
+  clickCount = clickCount + 1
+  // clickCount = (clickCount + 1) % 10
+  // changeText.textContent = messages[currentMessageIndex] //changing text context of the paragraph element
+
+  // currentMessageIndex = (currentMessageIndex + 1) % messages.length
 }
 
 // getting those elements by ID
 const changeText = document.getElementById('changeText')
 const pushButton = document.getElementById('pushableButton')
+const secondChangeText = document.getElementById('secondChangeText')
 
 // Event listener for the click
 pushButton.addEventListener('click', buttonClick)

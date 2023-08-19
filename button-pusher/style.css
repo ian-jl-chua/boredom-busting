@@ -45,8 +45,14 @@ body {
 }
 
 .message {
-  grid-area: 6/3/7/8;
+  grid-area: 6/4/7/7;
+  text-align: center;
   /* background-color: rgb(148, 97, 97); */
+}
+
+.otherMessage {
+  grid-area: 3/4/4/7;
+  text-align: center;
 }
 
 /* rol-st, col-st, row-en, col-en */
