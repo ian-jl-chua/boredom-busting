@@ -37,7 +37,17 @@ function secondMessage() {
 }
 
 function buttonMove() {
-  pushButton.style.gridArea = '3/3/4/4'
+  // pushButton.style.gridArea = '3/3/4/4'
+  let randomRowStart, randomRowEnd, randomColStart, randomColEnd
+
+  do {
+    randomRowStart = Math.floor(Math.random() * 7) + 1
+    randomRowEnd = randomRowStart + 1
+    randomColStart = Math.floor(Math.random() * 9) + 1
+    randomColEnd = randomColStart + 1
+  } while (randomRowStart === 1 && randomColStart === 5)
+
+  pushButton.style.gridArea = `${randomRowStart}/${randomColStart}/${randomRowEnd}/${randomColEnd}`
 }
 
 function buttonClick() {
@@ -49,7 +59,7 @@ function buttonClick() {
     firstMessage()
   }
 
-  clickCount = (clickCount + 1) % 16
+  clickCount = (clickCount + 1) % 25
 }
 
 // getting those elements by ID
