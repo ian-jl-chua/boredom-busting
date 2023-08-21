@@ -24,20 +24,21 @@ let firstMessageIndex = 0
 let secondMessageIndex = 0
 let clickCount = 0
 
-function firstMessage() {
+// Logic for first set of messages
+function firstMessages() {
   secondChangeText.textContent = ''
   changeText.textContent = firstListMessages[firstMessageIndex]
   firstMessageIndex = (firstMessageIndex + 1) % firstListMessages.length
 }
-
-function secondMessage() {
+// Logic for second set of messages
+function secondMessages() {
   changeText.textContent = ''
   secondChangeText.textContent = secondListMessages[secondMessageIndex]
   secondMessageIndex = (secondMessageIndex + 1) % secondListMessages.length
 }
-
+// Logic for third action
 function buttonMove() {
-  // pushButton.style.gridArea = '3/3/4/4'
+
   let randomRowStart, randomRowEnd, randomColStart, randomColEnd
 
   do {
@@ -45,21 +46,29 @@ function buttonMove() {
     randomRowEnd = randomRowStart + 1
     randomColStart = Math.floor(Math.random() * 9) + 1
     randomColEnd = randomColStart + 1
-  } while (randomRowStart === 1 && randomColStart === 5)
+  } while (
+    (randomRowStart === 1 && randomColStart === 5) ||
+    (randomRowStart === 3 && randomColStart === 4) ||
+    (randomRowStart === 3 && randomColStart === 5) ||
+    (randomRowStart === 3 && randomColStart === 6)
+  )
 
   pushButton.style.gridArea = `${randomRowStart}/${randomColStart}/${randomRowEnd}/${randomColEnd}`
 }
 
+// ACTUAL BUTTON ACTIONS
 function buttonClick() {
   if (clickCount >= 15) {
+    // moving the button 10 times
     buttonMove()
+    console.log(clickCount)
   } else if (clickCount >= 10) {
-    secondMessage()
+    secondMessages()
   } else {
-    firstMessage()
+    firstMessages()
   }
 
-  clickCount = (clickCount + 1) % 25
+  clickCount = (clickCount + 1) % 26
 }
 
 // getting those elements by ID
