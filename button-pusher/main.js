@@ -38,7 +38,12 @@ function secondMessages() {
 }
 // Logic for third action
 function buttonMove() {
-
+  const excludeGridAreas = [
+    [1, 5, 2, 6],
+    [3, 4, 4, 7],
+    [3, 5, 4, 6],
+    [3, 6, 4, 7],
+  ]
   let randomRowStart, randomRowEnd, randomColStart, randomColEnd
 
   do {
@@ -47,10 +52,9 @@ function buttonMove() {
     randomColStart = Math.floor(Math.random() * 9) + 1
     randomColEnd = randomColStart + 1
   } while (
-    (randomRowStart === 1 && randomColStart === 5) ||
-    (randomRowStart === 3 && randomColStart === 4) ||
-    (randomRowStart === 3 && randomColStart === 5) ||
-    (randomRowStart === 3 && randomColStart === 6)
+    excludeGridAreas.some(
+      (area) => area[0] === randomRowStart && area[1] === randomColStart
+    )
   )
 
   pushButton.style.gridArea = `${randomRowStart}/${randomColStart}/${randomRowEnd}/${randomColEnd}`
