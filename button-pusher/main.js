@@ -24,20 +24,22 @@ let firstMessageIndex = 0
 let secondMessageIndex = 0
 let clickCount = 0
 
-// Logic for first set of messages
+// Logic for 1st set of messages
 function firstMessages() {
   secondChangeText.textContent = ''
   changeText.textContent = firstListMessages[firstMessageIndex]
   firstMessageIndex = (firstMessageIndex + 1) % firstListMessages.length
 }
-// Logic for second set of messages
+// Logic for 2nd set of messages
 function secondMessages() {
   changeText.textContent = ''
   secondChangeText.textContent = secondListMessages[secondMessageIndex]
   secondMessageIndex = (secondMessageIndex + 1) % secondListMessages.length
 }
-// Logic for third action
+// Logic for 3rd action
 function buttonMove() {
+  secondChangeText.textContent = "Look, it's over there!"
+
   const excludeGridAreas = [
     [1, 5, 2, 6],
     [3, 4, 4, 7],
@@ -59,6 +61,8 @@ function buttonMove() {
 
   pushButton.style.gridArea = `${randomRowStart}/${randomColStart}/${randomRowEnd}/${randomColEnd}`
 }
+
+// Logic for 4th action
 
 // ACTUAL BUTTON ACTIONS
 function buttonClick() {
