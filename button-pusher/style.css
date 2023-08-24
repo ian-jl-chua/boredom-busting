@@ -7,14 +7,17 @@
 :root {
   --FF: 'Poppins', sans-serif;
   --FS: clamp(1rem, 2.2vh, 1.5rem);
-  --BG-COLOR: rgb(190, 157, 129);
-  --TXT-COLOR: rgb(48, 24, 21);
+  --BG-COLOR: rgb(143, 136, 120);
+  --TXT-COLOR: rgb(36, 13, 9);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --BG-COLOR: rgb(22, 22, 22);
     --TXT-COLOR: rgb(228, 221, 209);
+  }
+  .button-front {
+    background: hsl(0, 100%, 47%);
   }
 }
 
@@ -71,7 +74,7 @@ body {
   touch-action: manipulation;
 }
 
-/* .button-shadow {
+.button-shadow {
   position: absolute;
   top: 0;
   left: 0;
@@ -82,7 +85,7 @@ body {
   will-change: transform;
   transform: translateY(2px);
   transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
-} */
+}
 
 .button-edge {
   position: absolute;
@@ -106,8 +109,8 @@ body {
   padding: 12px 27px;
   border-radius: 12px;
   font-size: 1.1rem;
-  color: white;
-  background: hsl(0, 100%, 47%);
+  color: rgb(224, 214, 214);
+  background: hsl(7, 78%, 45%);
   will-change: transform;
   transform: translateY(-4px);
   transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);

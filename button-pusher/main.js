@@ -20,6 +20,7 @@ const secondListMessages = [
   "Alright, let's see how long you can keep this up",
 ]
 
+let buttonMoveCount = 0
 let firstMessageIndex = 0
 let secondMessageIndex = 0
 let clickCount = 0
@@ -45,7 +46,8 @@ function buttonMove() {
     [3, 4, 4, 7],
     [3, 5, 4, 6],
     [3, 6, 4, 7],
-  ]
+  ] // grids to be excluded from button placement
+
   let randomRowStart, randomRowEnd, randomColStart, randomColEnd
 
   do {
@@ -62,13 +64,22 @@ function buttonMove() {
   pushButton.style.gridArea = `${randomRowStart}/${randomColStart}/${randomRowEnd}/${randomColEnd}`
 }
 
+function resetButtonPosition() {
+  pushButton.style.gridArea = '4/5/5/6' // Reset button position
+  buttonMoveCount = 0 // Reset the count for buttonMove
+}
+
 // Logic for 4th action
 
 // ACTUAL BUTTON ACTIONS
 function buttonClick() {
   if (clickCount >= 15) {
-    // moving the button 10 times
-    buttonMove()
+    if (buttonMoveCount >= 10) {
+      resetButtonPosition() 
+    } else {
+      buttonMove() 
+      buttonMoveCount++
+    }
     console.log(clickCount)
   } else if (clickCount >= 10) {
     secondMessages()
