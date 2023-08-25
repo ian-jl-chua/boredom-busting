@@ -70,14 +70,21 @@ function resetButtonPosition() {
 }
 
 // Logic for 4th action
+function kaboom() {
+  secondChangeText.textContent = ''
+  changeText.textContent = 'OMG what have you done...'
+  explode.hidden = false
+}
 
 // ACTUAL BUTTON ACTIONS
 function buttonClick() {
-  if (clickCount >= 15) {
+  if (clickCount >= 26) {
+    kaboom()
+  } else if (clickCount >= 15) {
     if (buttonMoveCount >= 10) {
-      resetButtonPosition() 
+      resetButtonPosition()
     } else {
-      buttonMove() 
+      buttonMove() // does this function 10 times
       buttonMoveCount++
     }
     console.log(clickCount)
@@ -87,13 +94,14 @@ function buttonClick() {
     firstMessages()
   }
 
-  clickCount = (clickCount + 1) % 26
+  clickCount = (clickCount + 1) % 27
 }
 
 // getting those elements by ID
 const changeText = document.getElementById('changeText')
 const pushButton = document.getElementById('pushableButton')
 const secondChangeText = document.getElementById('secondChangeText')
+const explode = document.getElementById('explode')
 
 // Event listener for the click
 pushButton.addEventListener('click', buttonClick)
