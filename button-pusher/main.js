@@ -42,7 +42,7 @@ function buttonMove() {
   secondChangeText.textContent = "Look, it's over there!"
 
   const excludeGridAreas = [
-    [1, 5, 2, 6],
+    [1, 5, 2, 6], //title
     [3, 4, 4, 7],
     [3, 5, 4, 6],
     [3, 6, 4, 7],
@@ -63,17 +63,37 @@ function buttonMove() {
 
   pushButton.style.gridArea = `${randomRowStart}/${randomColStart}/${randomRowEnd}/${randomColEnd}`
 }
-
+// Reset 3rd action
 function resetButtonPosition() {
   pushButton.style.gridArea = '4/5/5/6' // Reset button position
   buttonMoveCount = 0 // Reset the count for buttonMove
 }
-
 // Logic for 4th action
 function kaboom() {
   secondChangeText.textContent = ''
   changeText.textContent = 'OMG what have you done...'
   explode.hidden = false
+
+  const excludeGridAreas = [
+    [1, 5, 2, 6], //title
+    [6, 4, 7, 7],
+    [4, 5, 5, 6],
+  ] // grids to be excluded from explosion
+
+  let randomRowStart, randomRowEnd, randomColStart, randomColEnd
+
+  do {
+    randomRowStart = Math.floor(Math.random() * 7) + 1
+    randomRowEnd = randomRowStart + 1
+    randomColStart = Math.floor(Math.random() * 9) + 1
+    randomColEnd = randomColStart + 1
+  } while (
+    excludeGridAreas.some(
+      (area) => area[0] === randomRowStart && area[1] === randomColStart
+    )
+  )
+  explode.style.gridArea = `${randomRowStart}/${randomColStart}/${randomRowEnd}/${randomColEnd}`
+
 }
 
 // ACTUAL BUTTON ACTIONS
@@ -94,7 +114,7 @@ function buttonClick() {
     firstMessages()
   }
 
-  clickCount = (clickCount + 1) % 27
+  clickCount = (clickCount + 1) % 37
 }
 
 // getting those elements by ID
