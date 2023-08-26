@@ -20,10 +20,11 @@ const secondListMessages = [
   "Alright, let's see how long you can keep this up",
 ]
 
-let buttonMoveCount = 0
+let subsequentClickCount = 0
 let firstMessageIndex = 0
 let secondMessageIndex = 0
-let clickCount = 0
+let mainClickCount = 0
+let hasKaboomed = false
 
 // Logic for 1st set of messages
 function firstMessages() {
@@ -66,55 +67,72 @@ function buttonMove() {
 // Reset 3rd action
 function resetButtonPosition() {
   pushButton.style.gridArea = '4/5/5/6' // Reset button position
-  buttonMoveCount = 0 // Reset the count for buttonMove
+  subsequentClickCount = 0 // Reset the count for buttonMove
 }
 // Logic for 4th action
 function kaboom() {
-  secondChangeText.textContent = ''
-  changeText.textContent = 'OMG what have you done...'
-  explode.hidden = false
+  if (!hasKaboomed) {
+    secondChangeText.textContent = ''
+    changeText.textContent = 'OMG what have you done...'
+    explode.hidden = false
 
-  const excludeGridAreas = [
-    [1, 5, 2, 6], //title
-    [6, 4, 7, 7],
-    [4, 5, 5, 6],
-  ] // grids to be excluded from explosion
+    const excludeGridAreas = [
+      [1, 5, 2, 6], //title
+      [6, 4, 7, 7],
+      [4, 5, 5, 6],
+    ] // grids to be excluded from explosion
 
-  let randomRowStart, randomRowEnd, randomColStart, randomColEnd
+    // setInterval handles the explosion effect to make it random and more natural
+    setInterval(() => {
+      let randomRowStart, randomRowEnd, randomColStart, randomColEnd
 
-  do {
-    randomRowStart = Math.floor(Math.random() * 7) + 1
-    randomRowEnd = randomRowStart + 1
-    randomColStart = Math.floor(Math.random() * 9) + 1
-    randomColEnd = randomColStart + 1
-  } while (
-    excludeGridAreas.some(
-      (area) => area[0] === randomRowStart && area[1] === randomColStart
-    )
-  )
-  explode.style.gridArea = `${randomRowStart}/${randomColStart}/${randomRowEnd}/${randomColEnd}`
+      do {
+        randomRowStart = Math.floor(Math.random() * 7) + 1
+        randomRowEnd = randomRowStart + 1
+        randomColStart = Math.floor(Math.random() * 9) + 1
+        randomColEnd = randomColStart + 1
+      } while (
+        excludeGridAreas.some(
+          (area) => area[0] === randomRowStart && area[1] === randomColStart
+        )
+      )
 
+      explode.style.gridArea = `${randomRowStart}/${randomColStart}/${randomRowEnd}/${randomColEnd}`
+    }, 1500)
+
+    hasKaboomed = true
+  }
+}
+// Reset 4th action
+function resetKaboom() {
+  explode.hidden = true
 }
 
 // ACTUAL BUTTON ACTIONS
 function buttonClick() {
-  if (clickCount >= 26) {
-    kaboom()
-  } else if (clickCount >= 15) {
-    if (buttonMoveCount >= 10) {
+  if (mainClickCount >= 26) {
+    if (subsequentClickCount >= 10) {
+      resetKaboom() //resets kaboom once user presses button 10 times
+    } else {
+      kaboom()
+      subsequentClickCount++
+      console.log(subsequentClickCount)
+    }
+  } else if (mainClickCount >= 15) {
+    if (subsequentClickCount >= 10) {
       resetButtonPosition()
     } else {
       buttonMove() // does this function 10 times
-      buttonMoveCount++
+      subsequentClickCount++
     }
-    console.log(clickCount)
-  } else if (clickCount >= 10) {
+    console.log(mainClickCount)
+  } else if (mainClickCount >= 10) {
     secondMessages()
   } else {
     firstMessages()
   }
 
-  clickCount = (clickCount + 1) % 37
+  mainClickCount = (mainClickCount + 1) % 37
 }
 
 // getting those elements by ID
