@@ -70,6 +70,15 @@ function resetButtonPosition() {
   subsequentClickCount = 0 // Reset the count for buttonMove
 }
 // Logic for 4th action
+function colorCubes() {
+  const colorDiv = document.createElement('div')
+
+  colorDiv.classList.add('colorChange')
+
+  explode.parentElement.insertBefore(colorDiv, explode)
+}
+
+// Logic for 5th action
 function kaboom() {
   if (!hasKaboomed) {
     secondChangeText.textContent = ''
@@ -103,21 +112,24 @@ function kaboom() {
     hasKaboomed = true
   }
 }
-// Reset 4th action
+// Reset 5th action
 function resetKaboom() {
   explode.hidden = true
+  changeText.textContent = ''
 }
 
 // ACTUAL BUTTON ACTIONS
 function buttonClick() {
+  // if (subsequentClickCount >= 10) {
+  //     resetKaboom() //resets kaboom once user presses button 10 times
+  //   } else {
+  //     kaboom()
+  //     subsequentClickCount++
+  //     console.log(subsequentClickCount)
+  //   }
+
   if (mainClickCount >= 26) {
-    if (subsequentClickCount >= 10) {
-      resetKaboom() //resets kaboom once user presses button 10 times
-    } else {
-      kaboom()
-      subsequentClickCount++
-      console.log(subsequentClickCount)
-    }
+    colorCubes()
   } else if (mainClickCount >= 15) {
     if (subsequentClickCount >= 10) {
       resetButtonPosition()
