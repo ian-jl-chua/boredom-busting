@@ -69,10 +69,49 @@ body {
   background-position: center; 
 }
 
-.colorChange{
-  width: 100px;
-  height: 100px;
-  background-color: red;
+.changeColor{
+  width: 80px;
+  height: 80px;
+  background-color: transparent;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  animation: colorChange 1s infinite;
+}
+
+@keyframes colorChange {
+  0% {
+    background-color: var(--color0);
+  }
+  10%{
+    background-color: var(--color1);
+  }
+  20%{
+    background-color: var(--color2);
+  }
+  30%{
+    background-color: var(--color3);
+  }
+  40%{
+    background-color: var(--color4);
+  }
+  50% {
+    background-color: var(--color5);
+  }
+  60% {
+    background-color: var(--color6);
+  }
+  70% {
+    background-color: var(--color7);
+  }
+  80% {
+    background-color: var(--color8);
+  }
+  90% {
+    background-color: var(--color9);
+  }
+  100% {
+    background-color: var(--color10);
+  }
 }
 
 
