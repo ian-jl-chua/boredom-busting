@@ -1,14 +1,9 @@
 // Messages to be displayed
 const firstListMessages = [
   "Please don't touch the button.",
-  'Are you for real...',
   'Wow really',
   "Don't you have anything else to do?",
   'You know that time is money right?',
-  'You are throwing away money by pressing this.',
-  "Ok, you're gonna just do it anyway...",
-  "You can't be serious...",
-  'Why are you still doing this?',
   '*sigh*',
 ]
 
@@ -20,20 +15,18 @@ const secondListMessages = [
   "Alright, let's see how long you can keep this up",
 ]
 
-
 let firstMessageIndex = 0
 let secondMessageIndex = 0
 let hasKaboomed = false
-let haveSeizure = false
+let hasSeizured = false
 
-
-// Logic for 1st set of messages
+// Logic for 1st action
 export function firstMessages() {
   secondChangeText.textContent = ''
   changeText.textContent = firstListMessages[firstMessageIndex]
   firstMessageIndex = (firstMessageIndex + 1) % firstListMessages.length
 }
-// Logic for 2nd set of messages
+// Logic for 2nd action and reset 1st action
 export function secondMessages() {
   changeText.textContent = ''
   secondChangeText.textContent = secondListMessages[secondMessageIndex]
@@ -68,6 +61,7 @@ export function buttonMove() {
 // Reset 3rd action
 export function resetButtonMove() {
   pushButton.style.gridArea = '4/5/5/6' // Reset button position
+  changeText.textContent = 'Why are you even doing this?'
 
   const secondMsg = document.querySelector('.messageTwo')
 
@@ -75,8 +69,8 @@ export function resetButtonMove() {
 }
 // Logic for 4th action
 export function colorCubes() {
-  if (!haveSeizure) {
-    changeText.textContent = "It's SEIZURE TIME!!!!!!!!!!!!!"
+  if (!hasSeizured) {
+    changeText.textContent = "You're gonna have a SEIZURE!!!!!!!!!!!!!"
 
     let divCounter = 0 // Counter to track the number of generated divs
     const maxDivs = 58 // Maximum number of divs to generate
@@ -108,15 +102,16 @@ export function colorCubes() {
         }
       } else {
         clearInterval(intervalId) // Clear the interval if the desired count has already been reached
+        changeText.textContent = ''
       }
     }, intervalDuration)
 
-    haveSeizure = true
+    hasSeizured = true
   }
 }
 // Reset 4th action
 export function resetColorCubes() {
-  changeText.textContent = ''
+  changeText.textContent = 'Why are you still here?'
   secondChangeText.textContent = ''
 
   const elementsToRemove = document.querySelectorAll('.changeColor')
@@ -126,6 +121,7 @@ export function resetColorCubes() {
     element.remove()
   })
 
+  hasSeizured = false
   const secondMsg = document.querySelector('.messageTwo')
   secondMsg.hidden = false
 }
@@ -165,6 +161,7 @@ export function kaboom() {
 }
 // Reset 5th action
 export function resetKaboom() {
+  hasKaboomed = false
   explode.hidden = true
   changeText.textContent = ''
 }
@@ -174,4 +171,3 @@ const changeText = document.getElementById('changeText')
 const pushButton = document.getElementById('pushableButton')
 const secondChangeText = document.getElementById('secondChangeText')
 const explode = document.getElementById('explode')
-

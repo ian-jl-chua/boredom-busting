@@ -14,9 +14,9 @@ let mainClickCount = 0
 
 // ACTUAL BUTTON ACTIONS
 function buttonClick() {
-  if (mainClickCount >= 37) {
-    if (subsequentClickCount >= 10) {
-      resetKaboom() 
+  if (mainClickCount >= 20) {
+    if (subsequentClickCount >= 4) {
+      resetKaboom()
       subsequentClickCount = 0
     } else {
       kaboom()
@@ -24,8 +24,8 @@ function buttonClick() {
     }
     // console.log(mainClickCount)
     // console.log('sub', subsequentClickCount)
-  } else if (mainClickCount >= 26) {
-    if (subsequentClickCount >= 10) {
+  } else if (mainClickCount >= 15) {
+    if (subsequentClickCount >= 4) {
       resetColorCubes()
       subsequentClickCount = 0
     } else {
@@ -34,27 +34,25 @@ function buttonClick() {
     }
     // console.log(mainClickCount)
     // console.log('sub', subsequentClickCount)
-  } else if (mainClickCount >= 15) {
-    if (subsequentClickCount >= 10) {
+  } else if (mainClickCount >= 10) {
+    if (subsequentClickCount >= 4) {
       resetButtonMove()
       subsequentClickCount = 0
     } else {
-      buttonMove() // does this function 10 times
+      buttonMove()
       subsequentClickCount++
     }
     // console.log(mainClickCount)
     // console.log('sub', subsequentClickCount)
-  } else if (mainClickCount >= 10) {
+  } else if (mainClickCount >= 5) {
     secondMessages()
     // console.log(mainClickCount)
-    // console.log('sub', subsequentClickCount)
   } else {
     firstMessages()
     // console.log(mainClickCount)
-    // console.log('sub', subsequentClickCount)
   }
 
-  mainClickCount = (mainClickCount + 1) % 49
+  mainClickCount = (mainClickCount + 1) % 25
 }
 
 const pushButton = document.getElementById('pushableButton')
