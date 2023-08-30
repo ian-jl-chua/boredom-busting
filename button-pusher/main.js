@@ -14,34 +14,19 @@ let mainClickCount = 0
 
 // ACTUAL BUTTON ACTIONS
 function buttonClick() {
+  subsequentClickCount =
+    subsequentClickCount >= 4 ? 0 : subsequentClickCount + 1
+
   if (mainClickCount >= 20) {
-    if (subsequentClickCount >= 4) {
-      resetKaboom()
-      subsequentClickCount = 0
-    } else {
-      kaboom()
-      subsequentClickCount++
-    }
+    subsequentClickCount === 0 ? resetKaboom() : kaboom()
     // console.log(mainClickCount)
     // console.log('sub', subsequentClickCount)
   } else if (mainClickCount >= 15) {
-    if (subsequentClickCount >= 4) {
-      resetColorCubes()
-      subsequentClickCount = 0
-    } else {
-      colorCubes()
-      subsequentClickCount++
-    }
+    subsequentClickCount === 0 ? resetColorCubes() : colorCubes()
     // console.log(mainClickCount)
     // console.log('sub', subsequentClickCount)
   } else if (mainClickCount >= 10) {
-    if (subsequentClickCount >= 4) {
-      resetButtonMove()
-      subsequentClickCount = 0
-    } else {
-      buttonMove()
-      subsequentClickCount++
-    }
+    subsequentClickCount === 0 ? resetButtonMove() : buttonMove()
     // console.log(mainClickCount)
     // console.log('sub', subsequentClickCount)
   } else if (mainClickCount >= 5) {
