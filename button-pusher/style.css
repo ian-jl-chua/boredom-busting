@@ -62,36 +62,36 @@ body {
 /* rol-st, col-st, row-en, col-en */
 
 .explosion {
-  width: 100%; 
-  height: 100%; 
-  background-image: url('./assets/kaboom.gif'); 
-  background-size: cover; 
-  background-position: center; 
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/kaboom.gif');
+  background-size: cover;
+  background-position: center;
 }
 
-.changeColor{
+.changeColor {
   width: 80px;
   height: 80px;
   background-color: transparent;
   border: 2px solid transparent;
   border-radius: 20px;
-  animation: colorChange 1s infinite;
+  animation: colorChange 0.5s infinite;
 }
 
 @keyframes colorChange {
   0% {
     background-color: var(--color0);
   }
-  10%{
+  10% {
     background-color: var(--color1);
   }
-  20%{
+  20% {
     background-color: var(--color2);
   }
-  30%{
+  30% {
     background-color: var(--color3);
   }
-  40%{
+  40% {
     background-color: var(--color4);
   }
   50% {
@@ -113,7 +113,6 @@ body {
     background-color: var(--color10);
   }
 }
-
 
 /* Button */
 .button-pushAble {
