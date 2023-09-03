@@ -70,23 +70,20 @@ export function resetButtonMove() {
 // 4th action
 export function randomGlow() {
   changeText.textContent = 'It looks like you have broken something...'
-  const existingGlowDiv = document.querySelector('.glow')
+  const existingGlowDivs = document.querySelectorAll('.glow')
 
-  if (!existingGlowDiv) {
+  // Check the number of existing .glow divs
+  if (existingGlowDivs.length < 5) {
     const glowDiv = document.createElement('div')
     glowDiv.classList.add('glow')
 
-    if (explode && explode.parentElement) {
-      explode.parentElement.insertBefore(glowDiv, explode)
-    } else {
-      console.log('There seems to be an error')
-    }
-  } else {
+    // Generate a random grid location
     const excludeGridAreas = [
-      [1, 5, 2, 6], //title
+      [1, 5, 2, 6], // title
       [4, 5, 5, 6], // button
       [6, 4, 7, 7],
     ] // grids to be excluded
+
     let randomRowStart, randomRowEnd, randomColStart, randomColEnd
 
     do {
@@ -100,7 +97,15 @@ export function randomGlow() {
       )
     )
 
-    existingGlowDiv.style.gridArea = `${randomRowStart}/${randomColStart}/${randomRowEnd}/${randomColEnd}`
+    glowDiv.style.gridArea = `${randomRowStart}/${randomColStart}/${randomRowEnd}/${randomColEnd}`
+
+    if (explode && explode.parentElement) {
+      explode.parentElement.insertBefore(glowDiv, explode)
+    } else {
+      console.log('There seems to be an error')
+    }
+  } else {
+    console.log('There are already 5 or more .glow divs.')
   }
 }
 // Reset 4th action
@@ -108,16 +113,16 @@ export function resetRandomGlow() {
   changeText.textContent = 'Why are you still here?'
   secondChangeText.textContent = ''
 
-  const divToRemove = document.querySelector('.glow')
+  const elementsToRemove = document.querySelectorAll('.glow')
 
-  if (divToRemove) {
-    divToRemove.remove()
-  }
+  elementsToRemove.forEach((element) => {
+    element.remove()
+  })
 }
 // 5th action
 export function colorCubes() {
   if (!hasSeizured) {
-    changeText.textContent = "This will get rid of you for sure!!!!!!!!!!!!!"
+    changeText.textContent = 'This will get rid of you for sure!!!!!!!!!!!!!'
 
     let divCounter = 0 // Counter to track the number of generated divs
     const maxDivs = 58 // Maximum number of divs to generate
