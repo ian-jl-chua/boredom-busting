@@ -69,12 +69,48 @@ body {
   background-position: center;
 }
 
+/* ----- Glow Div ----- */
+.glow {
+  width: 80px;
+  height: 80px;
+  background-color: transparent;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  animation: glow 1s infinite;
+}
+
+@keyframes glow {
+0%{
+  background-color: rgb(153, 33, 175);
+}
+15%{
+  background-color: rgb(70, 142, 224);
+}
+20%{
+  background-color: rgb(53, 211, 158);
+}
+35%{
+  background-color: rgb(89, 226, 55);
+}
+50%{
+  background-color: rgb(234, 220, 35);
+}
+75%{
+  background-color: rgb(235, 142, 40);
+}
+100%{
+  background-color: rgb(230, 10, 10);
+}
+
+}
+
+/* ----- Seizure Div ----- */
 .changeColor {
   width: 80px;
   height: 80px;
   background-color: transparent;
   border: 2px solid transparent;
-  border-radius: 20px;
+  border-radius: 15px;
   animation: colorChange 0.5s infinite;
 }
 

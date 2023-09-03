@@ -20,19 +20,19 @@ let secondMessageIndex = 0
 let hasKaboomed = false
 let hasSeizured = false
 
-// Logic for 1st action
+// 1st action
 export function firstMessages() {
   secondChangeText.textContent = ''
   changeText.textContent = firstListMessages[firstMessageIndex]
   firstMessageIndex = (firstMessageIndex + 1) % firstListMessages.length
 }
-// Logic for 2nd action and reset 1st action
+// 2nd action and reset 1st action
 export function secondMessages() {
   changeText.textContent = ''
   secondChangeText.textContent = secondListMessages[secondMessageIndex]
   secondMessageIndex = (secondMessageIndex + 1) % secondListMessages.length
 }
-// Logic for 3rd action
+// 3rd action
 export function buttonMove() {
   secondChangeText.textContent = "Look, it's over there!"
 
@@ -67,10 +67,57 @@ export function resetButtonMove() {
 
   secondMsg.hidden = true
 }
-// Logic for 4th action
+// 4th action
+export function randomGlow() {
+  changeText.textContent = 'It looks like you have broken something...'
+  const existingGlowDiv = document.querySelector('.glow')
+
+  if (!existingGlowDiv) {
+    const glowDiv = document.createElement('div')
+    glowDiv.classList.add('glow')
+
+    if (explode && explode.parentElement) {
+      explode.parentElement.insertBefore(glowDiv, explode)
+    } else {
+      console.log('There seems to be an error')
+    }
+  } else {
+    const excludeGridAreas = [
+      [1, 5, 2, 6], //title
+      [4, 5, 5, 6], // button
+      [6, 4, 7, 7],
+    ] // grids to be excluded
+    let randomRowStart, randomRowEnd, randomColStart, randomColEnd
+
+    do {
+      randomRowStart = Math.floor(Math.random() * 7) + 1
+      randomRowEnd = randomRowStart + 1
+      randomColStart = Math.floor(Math.random() * 9) + 1
+      randomColEnd = randomColStart + 1
+    } while (
+      excludeGridAreas.some(
+        (area) => area[0] === randomRowStart && area[1] === randomColStart
+      )
+    )
+
+    existingGlowDiv.style.gridArea = `${randomRowStart}/${randomColStart}/${randomRowEnd}/${randomColEnd}`
+  }
+}
+// Reset 4th action
+export function resetRandomGlow() {
+  changeText.textContent = 'Why are you still here?'
+  secondChangeText.textContent = ''
+
+  const divToRemove = document.querySelector('.glow')
+
+  if (divToRemove) {
+    divToRemove.remove()
+  }
+}
+// 5th action
 export function colorCubes() {
   if (!hasSeizured) {
-    changeText.textContent = "You're gonna have a SEIZURE!!!!!!!!!!!!!"
+    changeText.textContent = "This will get rid of you for sure!!!!!!!!!!!!!"
 
     let divCounter = 0 // Counter to track the number of generated divs
     const maxDivs = 58 // Maximum number of divs to generate
@@ -109,9 +156,9 @@ export function colorCubes() {
     hasSeizured = true
   }
 }
-// Reset 4th action
+// Reset 5th action
 export function resetColorCubes() {
-  changeText.textContent = 'Why are you still here?'
+  changeText.textContent = 'Still not leaving huh?'
   secondChangeText.textContent = ''
 
   const elementsToRemove = document.querySelectorAll('.changeColor')
@@ -125,7 +172,7 @@ export function resetColorCubes() {
   const secondMsg = document.querySelector('.messageTwo')
   secondMsg.hidden = false
 }
-// Logic for 5th action
+// 6th action
 export function kaboom() {
   if (!hasKaboomed) {
     secondChangeText.textContent = ''
@@ -159,7 +206,7 @@ export function kaboom() {
     hasKaboomed = true
   }
 }
-// Reset 5th action
+// Reset 6th action
 export function resetKaboom() {
   hasKaboomed = false
   explode.hidden = true

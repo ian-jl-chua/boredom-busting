@@ -3,6 +3,8 @@ import {
   secondMessages,
   buttonMove,
   resetButtonMove,
+  randomGlow,
+  resetRandomGlow,
   colorCubes,
   resetColorCubes,
   kaboom,
@@ -17,12 +19,16 @@ function buttonClick() {
   subsequentClickCount =
     subsequentClickCount >= 4 ? 0 : subsequentClickCount + 1
 
-  if (mainClickCount >= 20) {
+  if (mainClickCount >= 25) {
     subsequentClickCount === 0 ? resetKaboom() : kaboom()
     // console.log(mainClickCount)
     // console.log('sub', subsequentClickCount)
-  } else if (mainClickCount >= 15) {
+  } else if (mainClickCount >= 20) {
     subsequentClickCount === 0 ? resetColorCubes() : colorCubes()
+    // console.log(mainClickCount)
+    // console.log('sub', subsequentClickCount)
+  } else if (mainClickCount >= 15) {
+    subsequentClickCount === 0 ? resetRandomGlow() : randomGlow()
     // console.log(mainClickCount)
     // console.log('sub', subsequentClickCount)
   } else if (mainClickCount >= 10) {
@@ -37,7 +43,7 @@ function buttonClick() {
     // console.log(mainClickCount)
   }
 
-  mainClickCount = (mainClickCount + 1) % 25
+  mainClickCount = (mainClickCount + 1) % 30
 }
 
 const pushButton = document.getElementById('pushableButton')
