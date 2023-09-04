@@ -5,8 +5,8 @@ import {
   resetButtonMove,
   randomGlow,
   resetRandomGlow,
-  colorCubes,
-  resetColorCubes,
+  seizure,
+  resetSeizure,
   kaboom,
   resetKaboom,
 } from './components.js'
@@ -24,7 +24,7 @@ function buttonClick() {
     // console.log(mainClickCount)
     // console.log('sub', subsequentClickCount)
   } else if (mainClickCount >= 20) {
-    subsequentClickCount === 0 ? resetColorCubes() : colorCubes()
+    subsequentClickCount === 0 ? resetSeizure() : seizure()
     // console.log(mainClickCount)
     // console.log('sub', subsequentClickCount)
   } else if (mainClickCount >= 15) {

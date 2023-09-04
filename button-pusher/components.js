@@ -110,7 +110,7 @@ export function randomGlow() {
 }
 // Reset 4th action
 export function resetRandomGlow() {
-  changeText.textContent = 'Why are you still here?'
+  changeText.textContent = "Don't you think it's time to leave?"
   secondChangeText.textContent = ''
 
   const elementsToRemove = document.querySelectorAll('.glow')
@@ -120,19 +120,52 @@ export function resetRandomGlow() {
   })
 }
 // 5th action
-export function colorCubes() {
+export function seizure() {
   if (!hasSeizured) {
     changeText.textContent = 'This will get rid of you for sure!!!!!!!!!!!!!'
 
-    let divCounter = 0 // Counter to track the number of generated divs
     const maxDivs = 58 // Maximum number of divs to generate
-    const intervalDuration = 50 // Interval duration in milliseconds
+    const intervalDuration = 40 // Interval duration in milliseconds
 
+    const excludedAreas = [
+      [1, 5, 2, 6], // title
+      [4, 5, 5, 6], // button
+      [6, 4, 7, 7],
+    ] // Define the excluded grid areas
+
+    const availableGridPositions = []
+    for (let rowStart = 1; rowStart <= 7; rowStart++) {
+      for (let colStart = 1; colStart <= 9; colStart++) {
+        const isExcluded = excludedAreas.some(
+          (area) =>
+            area[0] <= rowStart &&
+            area[1] <= colStart &&
+            area[2] >= rowStart + 1 &&
+            area[3] >= colStart + 1
+        )
+        if (!isExcluded) {
+          availableGridPositions.push({
+            rowStart,
+            rowEnd: rowStart + 1,
+            colStart,
+            colEnd: colStart + 1,
+          })
+        }
+      }
+    }
+
+    let divCounter = 0 // Counter to track the number of generated divs
     const intervalId = setInterval(() => {
-      if (divCounter < maxDivs) {
+      if (divCounter < maxDivs && availableGridPositions.length > 0) {
+        const randomIndex = Math.floor(
+          Math.random() * availableGridPositions.length
+        )
+        const randomPosition = availableGridPositions.splice(randomIndex, 1)[0]
+
         const seizureDiv = document.createElement('div')
         seizureDiv.classList.add('changeColor')
-        explode.parentElement.insertBefore(seizureDiv, explode)
+
+        seizureDiv.style.gridArea = `${randomPosition.rowStart}/${randomPosition.colStart}/${randomPosition.rowEnd}/${randomPosition.colEnd}`
 
         function generateRandomColor() {
           const r = Math.floor(Math.random() * 256)
@@ -146,6 +179,8 @@ export function colorCubes() {
         colors.forEach((color, index) => {
           seizureDiv.style.setProperty(`--color${index}`, color)
         })
+
+        explode.parentElement.insertBefore(seizureDiv, explode)
 
         divCounter++ // Increment the counter
 
@@ -162,7 +197,7 @@ export function colorCubes() {
   }
 }
 // Reset 5th action
-export function resetColorCubes() {
+export function resetSeizure() {
   changeText.textContent = 'Still not leaving huh?'
   secondChangeText.textContent = ''
 
