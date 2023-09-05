@@ -1,3 +1,7 @@
+// Interval IDs
+let seizureIntervalId
+let kaboomIntervalId
+
 // Messages to be displayed
 const firstListMessages = [
   "Please don't touch the button.",
@@ -155,7 +159,7 @@ export function seizure() {
     }
 
     let divCounter = 0 // Counter to track the number of generated divs
-    const intervalId = setInterval(() => {
+    seizureIntervalId = setInterval(() => {
       if (divCounter < maxDivs && availableGridPositions.length > 0) {
         const randomIndex = Math.floor(
           Math.random() * availableGridPositions.length
@@ -208,6 +212,8 @@ export function resetSeizure() {
     element.remove()
   })
 
+  clearInterval(seizureIntervalId)
+
   hasSeizured = false
   const secondMsg = document.querySelector('.messageTwo')
   secondMsg.hidden = false
@@ -226,7 +232,7 @@ export function kaboom() {
     ] // grids to be excluded from explosion
 
     // setInterval handles the explosion effect to make it random and more natural
-    setInterval(() => {
+    kaboomIntervalId = setInterval(() => {
       let randomRowStart, randomRowEnd, randomColStart, randomColEnd
 
       do {
@@ -248,6 +254,7 @@ export function kaboom() {
 }
 // Reset 6th action
 export function resetKaboom() {
+  clearInterval(kaboomIntervalId)
   hasKaboomed = false
   explode.hidden = true
   changeText.textContent = ''
