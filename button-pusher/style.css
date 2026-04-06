@@ -63,9 +63,13 @@ body {
   width: 100%;
   height: 100%;
   background-image: url('./assets/kaboom.gif');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
+  min-width: 120px;
+  min-height: 120px;
 }
+/* decided to go with this option, things are shifting and bouncing around but I prefer this side effect */
 
 /* ----- Glow Div ----- */
 .glow {
@@ -78,28 +82,27 @@ body {
 }
 
 @keyframes glow {
-0%{
-  background-color: rgb(153, 33, 175);
-}
-15%{
-  background-color: rgb(70, 142, 224);
-}
-20%{
-  background-color: rgb(53, 211, 158);
-}
-35%{
-  background-color: rgb(89, 226, 55);
-}
-50%{
-  background-color: rgb(234, 220, 35);
-}
-75%{
-  background-color: rgb(235, 142, 40);
-}
-100%{
-  background-color: rgb(230, 10, 10);
-}
-
+  0% {
+    background-color: rgb(153, 33, 175);
+  }
+  15% {
+    background-color: rgb(70, 142, 224);
+  }
+  20% {
+    background-color: rgb(53, 211, 158);
+  }
+  35% {
+    background-color: rgb(89, 226, 55);
+  }
+  50% {
+    background-color: rgb(234, 220, 35);
+  }
+  75% {
+    background-color: rgb(235, 142, 40);
+  }
+  100% {
+    background-color: rgb(230, 10, 10);
+  }
 }
 
 /* ----- Seizure Div ----- */

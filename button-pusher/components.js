@@ -1,6 +1,10 @@
 // Interval IDs
 let seizureIntervalId
 let kaboomIntervalId
+let firstMessageIndex = 0
+let secondMessageIndex = 0
+let hasKaboomed = false
+let hasSeizured = false
 
 // Messages to be displayed
 const firstListMessages = [
@@ -18,11 +22,6 @@ const secondListMessages = [
   'Do you really have nothing better to do?',
   "Alright, let's see how long you can keep this up",
 ]
-
-let firstMessageIndex = 0
-let secondMessageIndex = 0
-let hasKaboomed = false
-let hasSeizured = false
 
 // 1st action
 export function firstMessages() {
@@ -189,10 +188,10 @@ export function seizure() {
         divCounter++ // Increment the counter
 
         if (divCounter === maxDivs) {
-          clearInterval(intervalId) // Clear the interval once the desired count is reached
+          clearInterval(seizureIntervalId) // Clear the interval once the desired count is reached
         }
       } else {
-        clearInterval(intervalId) // Clear the interval if the desired count has already been reached
+        clearInterval(seizureIntervalId) // Clear the interval if the desired count has already been reached
         changeText.textContent = ''
       }
     }, intervalDuration)
