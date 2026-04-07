@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,6 +9,7 @@
     <title>Mind Reader</title>
   </head>
   <body>
+    <h1 class="visually-hidden">Mind Reader</h1>
     <div class="prompt container">
       <div class="window top-size window-width">
         <div class="title-bar title-font">
@@ -20,14 +21,16 @@
           </div>
         </div>
         <div class="window-body body-padding">
-          <br />
-          <div id="alertMessage"></div>
-          <form action="" id="mindReaderForm">
+          <!-- Input from user -->
+          <div id="inputView">
+            <div id="alertMessage"></div>
+            <br />
             <div class="field-row-stacked number-field" style="width: 240px">
-              <label for="selctedNumber"
+              <label for="selectNumber"
                 >Think of a number between 1 and 10</label
               >
-              <select id="selectedNumber">
+              <br />
+              <select id="selectNumber">
                 <option value="" selected disabled>
                   Select your number...
                 </option>
@@ -44,10 +47,24 @@
               </select>
             </div>
             <br />
-            <div class="container button">
-              <button type="button" id="readMindButton">Read my mind</button>
+            <div class="container">
+              <button type="button" id="readMindButton" class="button">
+                Read my mind
+              </button>
             </div>
-          </form>
+          </div>
+
+          <!-- Result for user -->
+          <div id="resultView" style="display: none">
+            <br />
+            <p>The number your are thinking of is <span id="result"></span></p>
+            <br />
+            <div class="container">
+              <button type="button" id="resetButton" class="button">
+                Play again?
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

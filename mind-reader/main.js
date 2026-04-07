@@ -1,53 +1,56 @@
-// Reading the user input and storing the data in local storage, then redirect user to result page
-function storeDataAndRedirect() {
-  const selectedNumber = document.getElementById('selectedNumber').value
+// Get DOM elements
+const inputView = document.getElementById('inputView')
+const resultView = document.getElementById('resultView')
+const selectNumber = document.getElementById('selectNumber')
+const readMindButton = document.getElementById('readMindButton')
+const resetButton = document.getElementById('resetButton')
+const resultSpan = document.getElementById('result')
+const alertMessageDiv = document.getElementById('alertMessage')
 
-  // handling if user doesn't select a number
-  if (!selectedNumber | null) {
-    const alertMessage = document.querySelector('#alertMessage')
+let currentSelectedNumber = null
 
-    const previousSibling = alertMessage.previousElementSibling
-    if (previousSibling) {
-      previousSibling.remove() // Removing the <br/> before the div
-    }
-
-    alertMessage.innerHTML = "<p> You didn't select a number... </p> <br/>"
-  } else {
-    sessionStorage.setItem('selectedNumber', selectedNumber)
-
-    window.location.href = 'result.html'
-  }
+// Function to show the result view
+function showResult(number) {
+  resultSpan.textContent = number
+  inputView.style.display = 'none'
+  resultView.style.display = 'block'
 }
 
-// Event listener for read mind button
-document.addEventListener('DOMContentLoaded', () => {
-  if (window.location.href.includes('index.html')) {
-    const readMind = document.getElementById('readMindButton')
-
-    readMind.addEventListener('click', storeDataAndRedirect)
-  }
-})
-
-// Retrieve the stored number from Local Storage
-const storedNumber = sessionStorage.getItem('selectedNumber')
-
-// Clears local storage and redirects user back to home page
-function resetAndRedirect() {
-  sessionStorage.removeItem('selectedNumber')
-  // didn't use sessionStorage.clear() because the code above is more specific
-
-  window.location.href = 'index.html'
+// Function to show the input view
+function clearInput() {
+  inputView.style.display = 'block'
+  resultView.style.display = 'none'
+  selectNumber.value = '' // Reset the select dropdown
+  alertMessageDiv.innerHTML = '' // Clear any error messages
+  currentSelectedNumber = null
 }
 
-// Event listener for the play again button
-// Display the stored number on the page
-document.addEventListener('DOMContentLoaded', () => {
-  if (window.location.href.includes('result.html')) {
-    const resultDiv = document.getElementById('result')
-    resultDiv.textContent = `${storedNumber}`
+// Function to handle "Read my mind" button click
+function readMind() {
+  const selectedNumber = selectNumber.value
 
-    const playAgain = document.getElementById('resultButton')
-
-    playAgain.addEventListener('click', resetAndRedirect)
+  if (!selectedNumber) {
+    // Show error message
+    alertMessageDiv.innerHTML = "<p>You didn't select a number...</p>"
+    return
   }
+
+  // Store the number and show result
+  currentSelectedNumber = selectedNumber
+  showResult(selectedNumber)
+}
+
+// Function to handle "Play again?" button click
+function playAgain() {
+  clearInput()
+}
+
+// Clear error message when user selects a number
+selectNumber.addEventListener('change', () => {
+  alertMessageDiv.innerHTML = ''
 })
+
+clearInput()
+// Set up event listeners
+readMindButton.addEventListener('click', readMind)
+resetButton.addEventListener('click', playAgain)
